@@ -1,37 +1,38 @@
-//----------//
-// any type //
-//----------//
+//--------//
+// tuples //
+//--------//
 
-let age: any
-let title
+let person: [string, number, boolean] = ['John', 24, false] // sort of like an object without field names
 
-age = 30
-age = false
+person[0] = 'Jim'
+person[1] = 30
 
-title = 25
-title = {
-  any: 'object',
-  you: 'want'
+//---------------//
+// tuple example //
+//---------------//
+
+let hsla: [number, string, string, number]
+hsla = [200, '100%', '50%', 1]
+
+let xy: [number, number]
+xy = [101.4, 88.9]
+
+function useCoords(): [number, number] {
+  const lat = 44.6
+  const long = 97.1
+
+  return [lat, long]
 }
 
-//--------------------//
-// any type in arrays //
-//--------------------//
+const [lat, long] = useCoords()
 
-let things: any[] = [1, 2, 3, 'a', 'b', 'c', ['another', 'array'], {an: 'object'}]
+//--------------//
+// named tuples //
+//--------------//
 
-//--------------------//
-// functions with any //
-//--------------------//
+let user: [name: string, age: number]
+// user.name = 'Joe' CANT DO THIS
+user = ['Joe', 25]
+console.log(user[0])
 
-function addTogether(value: any): any {
-  return value + value
-}
-
-console.log(addTogether(10))
-console.log(addTogether('echo'))
-console.log(addTogether([1, 2, 3]))
-
-// ------------------- USE CASE: ------------------- 
-// useful for migration from JS -> TS because it will
-// avoid errors at first while still being valid TS.
+// why not use an object instead?
