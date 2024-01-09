@@ -1,35 +1,37 @@
-//-----------//
-// functions //
-//-----------//
+//----------//
+// any type //
+//----------//
 
-function add(a: number, b: number): number {
-  return a + b
+let age: any
+let title
+
+age = 30
+age = false
+
+title = 25
+title = {
+  any: 'object',
+  you: 'want'
 }
 
-// arrow function syntax
-const subtract = (a: number, b: number): number => {
-  return a - b
+//--------------------//
+// any type in arrays //
+//--------------------//
+
+let things: any[] = [1, 2, 3, 'a', 'b', 'c', ['another', 'array'], {an: 'object'}]
+
+//--------------------//
+// functions with any //
+//--------------------//
+
+function addTogether(value: any): any {
+  return value + value
 }
 
-const a = 60
-const b = 9
-console.log(`Add: ${a} + ${b} = ${add(a, b)}`)
-console.log(`Subtract: ${a} - ${b} = ${subtract(a, b)}`)
+console.log(addTogether(10))
+console.log(addTogether('echo'))
+console.log(addTogether([1, 2, 3]))
 
-// void return types
-function addAllNumbers(items: number[]): void {
-  const total = items.reduce((a, b) => a + b, 0)
-  console.log(total)
-}
-
-addAllNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9])
-
-//-----------------------//
-// return type inference //
-//-----------------------//
-
-function formatGreeting(name: string, greeting: string) {
-  return `${greeting}, ${name}!`
-}
-
-console.log(formatGreeting('leonard', 'top of the morning'))
+// ------------------- USE CASE: ------------------- 
+// useful for migration from JS -> TS because it will
+// avoid errors at first while still being valid TS.
